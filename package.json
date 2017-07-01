@@ -4,22 +4,23 @@
 	"private": true,
 	"scripts": {
 		"start": "node node_modules/react-native/local-cli/cli.js start",
-    "lint": "eslint *.js src __tests__",
+		"lint": "eslint *.js src __tests__",
 		"test": "jest",
-    "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage && open coverage/lcov-report/index.html || xdg-open coverage/lcov-report/index.html",
-    "android:build": "cd android && ./gradlew assembleRelease",
-    "android:install": "cd android && ./gradlew assembleRelease && ./gradlew installRelease",
-    "android:hockeyapp": "cd android && ./gradlew assembleRelease && puck -submit=auto app/build/outputs/apk/app-release.apk",
-    "android:devices": "$ANDROID_HOME/platform-tools/adb devices",
-    "android:logcat": "$ANDROID_HOME/platform-tools/adb logcat *:S ReactNative:V ReactNativeJS:V",
-    "android:shake": "$ANDROID_HOME/platform-tools/adb devices | grep '\\t' | awk '{print $1}' | sed 's/\\s//g' | xargs -I {} $ANDROID_HOME/platform-tools/adb -s {} shell input keyevent 82",
-    "clean": "rm -rf $TMPDIR/react-* && watchman watch-del-all && yarn cache clean",
-    "reset": "rm -rf $TMPDIR/react-* && watchman watch-del-all && rm -rf ios/build && rm -rf node_modules/ && yarn cache clean && yarn install"
+		"test:watch": "jest --watch",
+		"test:coverage": "jest --coverage && open coverage/lcov-report/index.html || xdg-open coverage/lcov-report/index.html",
+		"android:build": "cd android && ./gradlew assembleRelease",
+		"android:install": "cd android && ./gradlew assembleRelease && ./gradlew installRelease",
+		"android:hockeyapp": "cd android && ./gradlew assembleRelease && puck -submit=auto app/build/outputs/apk/app-release.apk",
+		"android:devices": "$ANDROID_HOME/platform-tools/adb devices",
+		"android:logcat": "$ANDROID_HOME/platform-tools/adb logcat *:S ReactNative:V ReactNativeJS:V",
+		"android:shake": "$ANDROID_HOME/platform-tools/adb devices | grep '\\t' | awk '{print $1}' | sed 's/\\s//g' | xargs -I {} $ANDROID_HOME/platform-tools/adb -s {} shell input keyevent 82",
+		"clean": "rm -rf $TMPDIR/react-* && watchman watch-del-all && yarn cache clean",
+		"reset": "rm -rf $TMPDIR/react-* && watchman watch-del-all && rm -rf ios/build && rm -rf node_modules/ && yarn cache clean && yarn install"
 	},
 	"dependencies": {
 		"react": "16.0.0-alpha.12",
-		"react-native": "0.45.1"
+		"react-native": "0.45.1",
+		"react-navigation": "^1.0.0-beta.11"
 	},
 	"devDependencies": {
 		"babel-eslint": "^7.2.3",
