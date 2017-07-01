@@ -1,0 +1,11 @@
+// See: https://code.visualstudio.com/docs/languages/javascript#_javascript-project-jsconfigjson
+{
+    "compilerOptions": {
+        "allowJs": true,
+        "target": "ES6",
+        "allowSyntheticDefaultImports": true
+    },
+    "exclude": [
+        "node_modules"
+    ]
+}
