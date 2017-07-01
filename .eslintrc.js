@@ -25,8 +25,8 @@ module.exports = {
   rules: {
     indent: ["error", 2],
     "linebreak-style": ["error", "unix"],
-    quotes: ["error", "single"],
-    semi: ["error", "always"],
+    quotes: ["off", "single"],
+    semi: ["warn", "always"],
 
     // https://github.com/yannickcr/eslint-plugin-react
     "react/jsx-uses-react": "error",
