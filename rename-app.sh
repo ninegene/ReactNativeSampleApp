@@ -11,20 +11,25 @@ APP_ROOT="."
 ABSOLUTE_APP_ROOT=$(cd "$(dirname $0)"; pwd)
 
 NEW_NAME=$1
-OLD_NAME=$(basename ${ABSOLUTE_APP_ROOT})
+OLD_NAME=${2:-ReactNativeSampleApp}
 
 NEW_LOWERCASE_NAME=`echo $NEW_NAME | tr '[:upper:]' '[:lower:]'`
 OLD_LOWERCASE_NAME=`echo $OLD_NAME | tr '[:upper:]' '[:lower:]'`
 
 clean() {
-  (set -x
-  yarn run android:clean
-  yarn run ios:clean
-  )
+    if [[ ! -d node_modules ]]; then
+        (set -x
+        yarn install
+        )
+    fi
+    (set -x
+    yarn run android:clean
+    yarn run ios:clean
+    )
 }
 
 replace_name_in_files() {
-    local files=$(grep -riIl --exclude-dir={node_modules,build,.git} "${OLD_LOWERCASE_NAME}" ${APP_ROOT}/*)
+    local files=$(grep -riIl --exclude-dir={node_modules,build,.git} --exclude=$(basename $0) "${OLD_LOWERCASE_NAME}" ${APP_ROOT}/*)
     local f
     for f in ${files}; do
       (set -x
@@ -46,12 +51,16 @@ rename_files() {
     fi
 
     for f in ${files}; do
-      NEW_FILENAME=$(echo ${f} | sed "s/${OLD_NAME}/${NEW_NAME}/g;s/${OLD_LOWERCASE_NAME}/${NEW_LOWERCASE_NAME}/g")
-      mkdir -p $(dirname "${NEW_FILENAME}")
+      local new_filename=$(echo ${f} | sed "s/${OLD_NAME}/${NEW_NAME}/g;s/${OLD_LOWERCASE_NAME}/${NEW_LOWERCASE_NAME}/g")
+      mkdir -p $(dirname "${new_filename}")
       (set -x
-      ${mvCMD} "${f}" "${NEW_FILENAME}"
+      ${mvCMD} "${f}" "${new_filename}"
       )
     done
+}
+
+remove_old_ios_dirs() {
+    rm -r ${ABSOLUTE_APP_ROOT}/ios/${OLD_NAME}*
 }
 
 remove_leftover_empty_dirs() {
@@ -69,5 +78,6 @@ print_done_message() {
 clean
 replace_name_in_files
 rename_files
+remove_old_ios_dirs
 remove_leftover_empty_dirs
 print_done_message
