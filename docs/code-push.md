@@ -43,12 +43,11 @@ $ yarn add react-native-code-push
 ```
 $ react-native link react-native-code-push
 ```
+To get started, use Staging deployment key for testing first and change it later in `strings.xml` for android and `info.plist` for ios.
+Or hit <ENTER> to ignore.
 
 Based on: https://microsoft.github.io/code-push/docs/react-native.html#link-3
 More info: https://www.youtube.com/watch?v=b_Q1apn63q0
-
-#### Use Staging Deployment Key
-To get started, use Staging deployment key for testing first and change it later in `strings.xml` for android and `info.plist` for ios.
 
 #### Release via code-push
 ```
