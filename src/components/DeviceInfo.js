@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { ScrollView, View, StyleSheet, Text } from "react-native";
 import d from 'react-native-device-info';
 
@@ -32,12 +31,6 @@ const styles = StyleSheet.create({
 });
 
 class DeviceInfo extends Component {
-
-  static propsTypes = {
-    ...View.propTypes,
-    style: View.propTypes.style,
-    children: PropTypes.any,
-  }
 
   render() {
     const { style, ...rest } = this.props;

@@ -68,3 +68,9 @@ $ code-push deployment ls <AppName>-iOS
 $ code-push deployment ls <AppName>-Android
 ```
 
+Push to code-push server as for Staging deployment
+```
+$ cd scripts
+$ ./code-push stage
+```
+

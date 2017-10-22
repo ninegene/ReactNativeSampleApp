@@ -178,11 +178,14 @@ android {
     }
     signingConfigs {
         release {
-            if (project.hasProperty('REACTNATIVESAMPLEAPP_RELEASE_STORE_FILE')) {
-                storeFile file(REACTNATIVESAMPLEAPP_RELEASE_STORE_FILE)
-                storePassword REACTNATIVESAMPLEAPP_RELEASE_STORE_PASSWORD
-                keyAlias REACTNATIVESAMPLEAPP_RELEASE_KEY_ALIAS
-                keyPassword REACTNATIVESAMPLEAPP_RELEASE_KEY_PASSWORD
+            // https://facebook.github.io/react-native/docs/signed-apk-android.html
+            // https://developer.android.com/studio/publish/app-signing.html#signing-manually
+            // $ keytool -genkey -v -keystore dummy.keystore -alias dummy -keyalg RSA -keysize 2048 -validity 100000
+            if (project.hasProperty('DUMMY_RELEASE_STORE_FILE')) {
+                storeFile file(DUMMY_RELEASE_STORE_FILE)
+                storePassword DUMMY_RELEASE_STORE_PASSWORD
+                keyAlias DUMMY_RELEASE_KEY_ALIAS
+                keyPassword DUMMY_RELEASE_KEY_PASSWORD
             }
         }
     }
