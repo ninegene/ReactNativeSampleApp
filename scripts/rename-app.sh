@@ -39,7 +39,6 @@ kill_react_native_packager() {
 clean() {
     kill_react_native_packager
     (set -x
-    cd ${ROOTDIR}/android && ./gradlew clean
     rm -rf ${TMPDIR}/react-*
     watchman watch-del-all
     rm -rf ${ROOTDIR}/ios/build
