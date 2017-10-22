@@ -23,7 +23,7 @@ module.exports = {
 
   // http://eslint.org/docs/rules/
   rules: {
-    indent: ["error", 2],
+    indent: ["error", 2, {"SwitchCase": 1}],
     "linebreak-style": ["error", "unix"],
     quotes: ["off", "single"],
     semi: ["warn", "always"],
@@ -43,5 +43,6 @@ module.exports = {
 
     // custom
     "no-unused-vars": "warn",
+    "no-console": "off",
   }
 };

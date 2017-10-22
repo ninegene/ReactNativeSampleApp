@@ -50,6 +50,13 @@ Based on: https://microsoft.github.io/code-push/docs/react-native.html#link-3
 More info: https://www.youtube.com/watch?v=b_Q1apn63q0
 
 #### Release via code-push
+
+Set the deployment key in `strings.xml` for android and `info.plist` for ios.
+```
+$ cd scripts/
+$ ./set-deployment-key Staging
+```
+
 ```
 $ code-push release-react <AppName>-Android android
 $ code-push release-react <AppName>-iOS ios

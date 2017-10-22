@@ -1,7 +1,30 @@
 import React, { Component } from "react";
-import { View, Text, Button } from "react-native";
-import styles from "./styles/HomeScreenStyles";
+import { View, Text, Button, StyleSheet } from "react-native";
+import { Fonts, Colors } from "../Themes";
+import Metrics from "../Metrics";
 import Instruction from "../components/Instructions";
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: Colors.primaryBackground
+  },
+  welcome: {
+    fontSize: Fonts.size.h4,
+    fontFamily: Fonts.type.base,
+    color: Colors.primaryText,
+    textAlign: "center",
+    margin: Metrics.baseMargin
+  },
+  instructions: {
+    textAlign: "center",
+    marginBottom: 5,
+    color: Colors.primaryText,
+    fontSize: Fonts.size.medium
+  }
+});
 
 class HomeScreen extends Component {
   constructor(props) {
