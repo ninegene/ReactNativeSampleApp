@@ -3,6 +3,7 @@ import { View, Text, Button, StyleSheet } from "react-native";
 import { Fonts, Colors } from "../Themes";
 import Metrics from "../Metrics";
 import Instruction from "../components/Instructions";
+import d from 'react-native-device-info';
 
 const styles = StyleSheet.create({
   container: {
@@ -43,6 +44,7 @@ class HomeScreen extends Component {
         <Text style={styles.instructions}>To get started, edit src/*.js</Text>
         <Instruction />
         <Button onPress={this.handleDeviceInfoClick} title="Device Info" />
+        <Text style={styles.version}>{d.getVersion()}</Text>
       </View>
     );
   }
