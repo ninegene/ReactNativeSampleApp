@@ -1,6 +1,6 @@
 {
     "name": "ReactNativeSampleApp",
-    "version": "0.0.1",
+    "version": "1.0.0",
     "private": true,
     "scripts": {
         "start": "node node_modules/react-native/local-cli/cli.js start",
@@ -8,20 +8,28 @@
         "test": "jest",
         "test:watch": "jest --watch",
         "test:coverage": "jest --coverage && open coverage/lcov-report/index.html || xdg-open coverage/lcov-report/index.html",
-        "android:build": "cd android && ./gradlew assembleRelease",
         "android:clean": "cd android && ./gradlew clean",
-        "android:install": "cd android && ./gradlew assembleRelease && ./gradlew installRelease",
-        "android:hockeyapp": "cd android && ./gradlew assembleRelease && puck -submit=auto app/build/outputs/apk/app-release.apk",
         "android:devices": "$ANDROID_HOME/platform-tools/adb devices",
         "android:logcat": "$ANDROID_HOME/platform-tools/adb logcat *:S ReactNative:V ReactNativeJS:V",
         "android:shake": "$ANDROID_HOME/platform-tools/adb devices | grep '\\t' | awk '{print $1}' | sed 's/\\s//g' | xargs -I {} $ANDROID_HOME/platform-tools/adb -s {} shell input keyevent 82",
+        "android:build": "scripts/gradlebuild.sh apk",
+        "android:install": "scripts/gradlebuild.sh install",
+        "android:uninstall": "scripts/gradlebuild.sh uninstall",
+        "ios:build": "scripts/xcodebuild.sh ipa",
         "ios:clean": "rm -rf ios/build",
+        "version:bump": "scripts/version.sh bump patch",
+        "build": "scripts/build.sh",
+        "build-release": "scripts/build.sh && scripts/build.sh release",
+        "code-push": "scripts/code-push.sh release",
         "cache:clean": "rm -rf $TMPDIR/react-* && watchman watch-del-all && yarn cache clean",
-        "reset": "rm -rf $TMPDIR/react-* && watchman watch-del-all && rm -rf ios/build && rm -rf node_modules/ && yarn cache clean && yarn install"
+        "reset": "rm -rf $TMPDIR/react-* && watchman watch-del-all && rm -rf ios/build && rm -rf android/.gradle && rm -rf android/app/build && rm -rf node_modules/ && yarn cache clean && yarn install"
     },
     "dependencies": {
-        "react": "16.0.0-alpha.12",
-        "react-native": "0.47.2",
+        "lodash": "^4.17.4",
+        "react": "16.0.0-beta.5",
+        "react-native": "0.49.3",
+        "react-native-code-push": "^5.1.3-beta",
+        "react-native-device-info": "^0.12.1",
         "react-navigation": "^1.0.0-beta.11"
     },
     "devDependencies": {

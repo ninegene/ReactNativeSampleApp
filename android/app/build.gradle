@@ -1,6 +1,7 @@
 apply plugin: "com.android.application"
 
 import com.android.build.OutputFile
+import groovy.json.JsonSlurper
 
 /**
  * The react.gradle file registers a task for each build variant (e.g. bundleDebugJsAndAssets
@@ -72,7 +73,68 @@ import com.android.build.OutputFile
  * ]
  */
 
+project.ext.react = [
+        // the name of the generated asset file containing your JS bundle
+        bundleAssetName: "index.android.bundle",
+
+        // the entry file for bundle generation
+        entryFile: "index.js",
+
+        // whether to bundle JS and assets in debug mode
+        bundleInDebug: false,
+
+        // whether to bundle JS and assets in release mode
+        bundleInRelease: true,
+
+        // whether to bundle JS and assets in another build variant (if configured).
+        // See http://tools.android.com/tech-docs/new-build-system/user-guide#TOC-Build-Variants
+        // The configuration property can be in the following formats
+        //         'bundleIn${productFlavor}${buildType}'
+        //         'bundleIn${buildType}'
+        // bundleInFreeDebug: true,
+        // bundleInPaidRelease: true,
+        // bundleInBeta: true,
+
+        // whether to disable dev mode in custom build variants (by default only disabled in release)
+        // for example: to disable dev mode in the staging build type (if configured)
+        devDisabledInStaging: true,
+        // The configuration property can be in the following formats
+        //         'devDisabledIn${productFlavor}${buildType}'
+        //         'devDisabledIn${buildType}'
+
+        // the root of your project, i.e. where "package.json" lives
+        root: "../../",
+
+        // where to put the JS bundle asset in debug mode
+        jsBundleDirDebug: "$buildDir/intermediates/assets/debug",
+
+        // where to put the JS bundle asset in release mode
+        jsBundleDirRelease: "$buildDir/intermediates/assets/release",
+
+        // where to put drawable resources / React Native assets, e.g. the ones you use via
+        // require('./image.png')), in debug mode
+        resourcesDirDebug: "$buildDir/intermediates/res/merged/debug",
+
+        // where to put drawable resources / React Native assets, e.g. the ones you use via
+        // require('./image.png')), in release mode
+        resourcesDirRelease: "$buildDir/intermediates/res/merged/release",
+
+        // by default the gradle tasks are skipped if none of the JS files or assets change; this means
+        // that we don't look at files in android/ or ios/ to determine whether the tasks are up to
+        // date; if you have any other folders that you want to ignore for performance reasons (gradle
+        // indexes the entire tree), add them here. Alternatively, if you have JS files in android/
+        // for example, you might want to remove it from here.
+        inputExcludes: ["android/**", "ios/**"],
+
+        // override which node gets called and with what additional arguments
+        nodeExecutableAndArgs: ["node"],
+
+        // supply additional arguments to the packager
+        extraPackagerArgs: []
+]
+
 apply from: "../../node_modules/react-native/react.gradle"
+apply from: "../../node_modules/react-native-code-push/android/codepush.gradle"
 
 /**
  * Set this to true to create two separate APKs instead of one:
@@ -89,18 +151,42 @@ def enableSeparateBuildPerCPUArchitecture = false
  */
 def enableProguardInReleaseBuilds = false
 
+def getPackageJsonVersion() {
+    def inputFile = new File("../package.json")
+    def packageJson = new JsonSlurper().parseText(inputFile.text)
+    return packageJson["version"]
+}
+// Based on: https://medium.com/@andr3wjack/versioning-react-native-apps-407469707661
+def (major, minor, patch) = getPackageJsonVersion().tokenize('.')
+def _applicationId = "com.reactnativesampleapp"
+def _versionCode = (Integer.parseInt(major) * 10000 + Integer.parseInt(minor) * 100 + Integer.parseInt(patch))
+def _versionName = "${major}.${minor}.${patch}"
+
 android {
     compileSdkVersion 23
-    buildToolsVersion "23.0.1"
+    buildToolsVersion '25.0.2'
 
     defaultConfig {
-        applicationId "com.reactnativesampleapp"
+        applicationId _applicationId
         minSdkVersion 16
         targetSdkVersion 22
-        versionCode 1
-        versionName "1.0"
+        versionCode _versionCode
+        versionName _versionName
         ndk {
             abiFilters "armeabi-v7a", "x86"
+        }
+    }
+    signingConfigs {
+        release {
+            // https://facebook.github.io/react-native/docs/signed-apk-android.html
+            // https://developer.android.com/studio/publish/app-signing.html#signing-manually
+            // $ keytool -genkey -v -keystore dummy.keystore -alias dummy -keyalg RSA -keysize 2048 -validity 100000
+            if (project.hasProperty('DUMMY_RELEASE_STORE_FILE')) {
+                storeFile file(DUMMY_RELEASE_STORE_FILE)
+                storePassword DUMMY_RELEASE_STORE_PASSWORD
+                keyAlias DUMMY_RELEASE_KEY_ALIAS
+                keyPassword DUMMY_RELEASE_KEY_PASSWORD
+            }
         }
     }
     splits {
@@ -113,6 +199,7 @@ android {
     }
     buildTypes {
         release {
+            signingConfig signingConfigs.release
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
@@ -133,6 +220,8 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-device-info')
+    compile project(':react-native-code-push')
     compile fileTree(dir: "libs", include: ["*.jar"])
     compile "com.android.support:appcompat-v7:23.0.1"
     compile "com.facebook.react:react-native:+"  // From node_modules
@@ -143,4 +232,24 @@ dependencies {
 task copyDownloadableDepsToLibs(type: Copy) {
     from configurations.compile
     into 'libs'
+}
+
+task info {
+    doLast {
+        println "versionCode: ${_versionCode}"
+        println "versionName: ${_versionName}"
+        println "Output apk location:"
+        android.applicationVariants.all { variant ->
+            variant.outputs.each { output ->
+                def file = output.outputFile
+                println file
+            }
+        }
+    }
+}
+
+task applicationId {
+    doLast {
+        print "${_applicationId}"
+    }
 }
