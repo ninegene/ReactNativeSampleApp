@@ -6,7 +6,7 @@ import codePush from "react-native-code-push";
 import _ from "lodash";
 
 import HomeScreen from "./HomeScreen";
-import ChatScreen from "./ChatScreen";
+import DeviceInfoScreen from "./DeviceInfoScreen";
 const isDevMode = !!__DEV__;
 
 // See: https://microsoft.github.io/code-push/docs/react-native.html#link-6
@@ -36,14 +36,14 @@ const AppNavigator = StackNavigator(
     Home: {
       screen: HomeScreen
     },
-    Chat: {
-      screen: ChatScreen
+    DeviceInfo: {
+      screen: DeviceInfoScreen
     },
   },
   {
     // Default config for all screens
     initialRouteName: "Home",
-    headerMode: "none",
+    // headerMode: "none",
     navigationOptions: {
       headerStyle: styles.header
     }

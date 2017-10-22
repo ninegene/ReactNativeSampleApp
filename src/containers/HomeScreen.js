@@ -31,9 +31,9 @@ class HomeScreen extends Component {
     super(props);
   }
 
-  handleChatClick = () => {
+  handleDeviceInfoClick = () => {
     const { navigate } = this.props.navigation;
-    navigate("Chat", { user: "Lucy" });
+    navigate("DeviceInfo", { title: "My Device Info" });
   };
 
   render() {
@@ -42,7 +42,7 @@ class HomeScreen extends Component {
         <Text style={styles.welcome}>Welcome to React Native!</Text>
         <Text style={styles.instructions}>To get started, edit src/*.js</Text>
         <Instruction />
-        <Button onPress={this.handleChatClick} title="Chat with Lucy" />
+        <Button onPress={this.handleDeviceInfoClick} title="Device Info" />
       </View>
     );
   }

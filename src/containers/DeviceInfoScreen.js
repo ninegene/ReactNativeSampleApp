@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { View, Text, ImageBackground, StyleSheet } from "react-native";
 import { Fonts, Colors } from "../Themes";
 import Images from "../images";
+import DeviceInfo from "../components/DeviceInfo";
 
 const styles = StyleSheet.create({
   bgImageContainer: {
@@ -24,10 +25,10 @@ const styles = StyleSheet.create({
   },
 });
 
-class ChatScreen extends Component {
+class DeviceInfoScreen extends Component {
   // Nav options can be defined as a function of the screen's props:
   static navigationOptions = ({ navigation }) => ({
-    title: `Chat with ${navigation.state.params.user}`
+    title: navigation.state.params.title
   });
   render() {
     // The screen's current route is passed in to `props.navigation.state`:
@@ -37,14 +38,10 @@ class ChatScreen extends Component {
         style={styles.bgImageContainer}
         source={Images.mobilePhoneBg}
       >
-        <View style={styles.container}>
-          <Text style={styles.textColor}>
-            Chat with {params.user}
-          </Text>
-        </View>
+        <DeviceInfo />
       </ImageBackground>
     );
   }
 }
 
-export default ChatScreen;
+export default DeviceInfoScreen;
