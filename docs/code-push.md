@@ -14,29 +14,9 @@ $ code-push register
 $ cat ~/.code-push.config
 ```
 
-##### Create the code-push app
-```
-$ code-push app add <AppName>-iOS ios react-native
-
-E.g.
-$ code-push app add ReactNativeSampleApp-iOS ios react-native
-```
-
-```
-$ code-push app add <AppName>-iOS ios react-native
-
-E.g.
-$ code-push app add ReactNativeSampleApp-Android android react-native
-```
-
-#### List Deployment Keys
-```
-$ code-push deployment ls <AppName>-iOS -k
-$ code-push deployment ls <AppName>-Android -k
-```
-
 #### Install code-push
 ```
+$ cd ReactNativeSampleApp
 $ yarn add react-native-code-push
 ```
 
@@ -49,28 +29,44 @@ Or hit <ENTER> to ignore.
 Based on: https://microsoft.github.io/code-push/docs/react-native.html#link-3
 More info: https://www.youtube.com/watch?v=b_Q1apn63q0
 
+#### Add code-push app for iOS and Android
+```
+$ code-push app add IdeaNota-iOS ios react-native
+$ code-push app add IdeaNota-Android android react-native
+```
+
+#### List Deployment Keys
+```
+$ code-push deployment ls ReactNativeSampleApp-iOS -k
+$ code-push deployment ls ReactNativeSampleApp-Android -k
+```
+
 #### Release via code-push
 
 Set the deployment key in `strings.xml` for android and `info.plist` for ios.
 ```
 $ cd scripts/
-$ ./set-deployment-key Staging
+$ ./set-deployment-key.sh Staging
+OR
+$ ./set-deployment-key.sh Production
 ```
 
 ```
-$ code-push release-react <AppName>-Android android
-$ code-push release-react <AppName>-iOS ios
+$ code-push release-react ReactNativeSampleApp-Android android
+$ code-push release-react ReactNativeSampleApp-iOS ios
 ```
 
 List Deployment Status
 ```
-$ code-push deployment ls <AppName>-iOS
-$ code-push deployment ls <AppName>-Android
+$ code-push deployment ls ReactNativeSampleApp-iOS
+$ code-push deployment ls ReactNativeSampleApp-Android
 ```
 
-Push to code-push server as for Staging deployment
+Push to code-push server as for Staging or Production deployment
 ```
 $ cd scripts
-$ ./code-push stage
+$ ./code-push.sh stage
+OR
+$ ./code-push.sh prod
 ```
 
