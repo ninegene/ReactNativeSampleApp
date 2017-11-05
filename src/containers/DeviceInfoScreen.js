@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import { View, Text, ImageBackground, StyleSheet } from "react-native";
-import { Fonts, Colors } from "../Themes";
+import { ImageBackground, StyleSheet } from "react-native";
 import Images from "../images";
 import DeviceInfo from "../components/DeviceInfo";
 
@@ -33,6 +32,7 @@ class DeviceInfoScreen extends Component {
   render() {
     // The screen's current route is passed in to `props.navigation.state`:
     const { params } = this.props.navigation.state;
+    console.log('params', params);
     return (
       <ImageBackground
         style={styles.bgImageContainer}

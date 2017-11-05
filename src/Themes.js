@@ -24,7 +24,6 @@ const type = {
   base: 'Avenir-Book',
   bold: 'Avenir-Black',
   emphasis: 'HelveticaNeue-Italic',
-  mm3: 'Myanmar3',
 };
 
 const size = {

@@ -1,6 +1,7 @@
 ## ReactNativeSampleApp
 Minimal react native boilerplate/sample app with the following:
 * react-navigation
+* react-redux
 * react-native-code-push
 * react-native-device-info
 

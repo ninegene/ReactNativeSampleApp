@@ -1,27 +1,26 @@
+const isDevMode = !!__DEV__;
 import React, { Component } from "react";
 import { StyleSheet } from "react-native";
-import { Fonts, Colors } from "../Themes";
+import { Colors } from "../Themes";
 import { StackNavigator } from "react-navigation";
 import codePush from "react-native-code-push";
 import _ from "lodash";
+import { Provider } from "react-redux";
+import { createStore } from "redux";
+import appReducer from "../appReducer";
 
 import HomeScreen from "./HomeScreen";
 import DeviceInfoScreen from "./DeviceInfoScreen";
-const isDevMode = !!__DEV__;
 
 // See: https://microsoft.github.io/code-push/docs/react-native.html#link-6
 // See: https://microsoft.github.io/code-push/docs/react-native.html#link-10
-// const codePushOptions = {
-//   checkFrequency: codePush.CheckFrequency.ON_APP_RESUME,
-//   installMode: codePush.InstallMode.ON_NEXT_RESUME,
-// };
-
 // When an update is available, prompt the end user for permission
 // before downloading it, and then immediately apply the update.
 const codePushOptions = {
   updateDialog: true,
   checkFrequency: codePush.CheckFrequency.ON_APP_RESUME,
   installMode: codePush.InstallMode.IMMEDIATE,
+  // installMode: codePush.InstallMode.ON_NEXT_RESUME,
 };
 
 const styles = StyleSheet.create({
@@ -29,6 +28,8 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.primaryBackground,
   }
 });
+
+const store = createStore(appReducer);
 
 // Manifest of possible screens
 const AppNavigator = StackNavigator(
@@ -71,7 +72,7 @@ AppNavigator.router.getStateForAction = (action, state) => {
   // action has the following form
   {
     type: "Navigation/NAVIGATE",
-    routeName: "AlphabetChart",
+    routeName: "Home",
     params: {…}
   }
 
@@ -132,11 +133,13 @@ class App extends Component {
 
   render() {
     return (
-      <AppNavigator
-        ref={nav => {
-          this.navigator = nav;
-        }}
-      />
+      <Provider store={store}>
+        <AppNavigator
+          ref={nav => {
+            this.navigator = nav;
+          }}
+        />
+      </Provider>
     );
   }
 }
