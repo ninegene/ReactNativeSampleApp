@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import { View, ScrollView, Text, Button, StyleSheet } from "react-native";
-import { Fonts, Colors } from "../Themes";
+import { Fonts, Colors, Icons } from "../Themes";
 import Metrics from "../Metrics";
 import Instruction from "../components/Instructions";
 import { connect } from "react-redux";
-import * as actions from "../actions";
+import * as actions from "../redux/actions";
+import Icon from "react-native-vector-icons/MaterialIcons";
 
 const styles = StyleSheet.create({
   container: {
@@ -32,6 +33,18 @@ const styles = StyleSheet.create({
 });
 
 class HomeScreen extends Component {
+
+  static navigationOptions = {
+    title: "Home",
+    tabBarIcon: (props) => (
+      <Icon name="home" size={Icons.medium} color={props.tintColor} />
+    ),
+    headerTintColor: "white",
+    headerStyle: {
+      backgroundColor: "#39babd",
+    }
+  }
+
   constructor(props) {
     super(props);
   }
@@ -48,14 +61,18 @@ class HomeScreen extends Component {
 
   handleToogleTodos = () => {
     const { dispatch, todos } = this.props;
-    todos.forEach(todo => {
+    todos.todos.forEach(todo => {
       dispatch(actions.toggleTodo(todo.id));
     });
   }
 
+  handleDeleteAllTodos = () => {
+    const { dispatch } = this.props;
+    dispatch(actions.deleteAllTodos());
+  }
+
   render() {
     const { todos } = this.props;
-
     return (
       <View style={styles.container}>
         <ScrollView>
@@ -64,8 +81,8 @@ class HomeScreen extends Component {
           <Instruction />
           <Button style={styles.button} onPress={this.handleDeviceInfoClick} title="Device Info" />
           <Button style={styles.button} onPress={this.handleAddTodoClick} title="Add Todo" />
-          {todos.length > 0 && <Button style={styles.button} onPress={this.handleToogleTodos} title="Toggle Complete" />}
-          <Text>{todos.length}</Text>
+          <Button style={styles.button} onPress={this.handleDeleteAllTodos} title="Delete All" />
+          {todos.todos.length > 0 && <Button style={styles.button} onPress={this.handleToogleTodos} title="Toggle Complete" />}
           <Text>{JSON.stringify(todos, undefined, 2)}</Text>
         </ScrollView>
       </View>

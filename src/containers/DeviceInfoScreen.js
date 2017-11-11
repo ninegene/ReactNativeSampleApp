@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import { ImageBackground, StyleSheet } from "react-native";
+import { Icons } from "../Themes";
 import Images from "../images";
 import DeviceInfo from "../components/DeviceInfo";
+import Icon from "react-native-vector-icons/MaterialIcons";
 
 const styles = StyleSheet.create({
   bgImageContainer: {
@@ -20,19 +22,28 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   textColor: {
-    color: 'white',
+    color: "white",
   },
 });
 
 class DeviceInfoScreen extends Component {
-  // Nav options can be defined as a function of the screen's props:
-  static navigationOptions = ({ navigation }) => ({
-    title: navigation.state.params.title
-  });
+
+  static navigationOptions = {
+    title: "Device Info",
+    tabBarIcon: (props) => (
+      <Icon name="perm-device-information" size={Icons.medium} color={props.tintColor} />
+    ),
+    headerTintColor: "white",
+    headerStyle: {
+      backgroundColor: "#39babd",
+    }
+  }
+
+  constructor(props) {
+    super(props);
+  }
+
   render() {
-    // The screen's current route is passed in to `props.navigation.state`:
-    const { params } = this.props.navigation.state;
-    console.log('params', params);
     return (
       <ImageBackground
         style={styles.bgImageContainer}
