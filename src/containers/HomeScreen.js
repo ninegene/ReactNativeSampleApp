@@ -1,28 +1,28 @@
-import React, { Component } from "react";
-import { View, ScrollView, Text, Button, StyleSheet } from "react-native";
-import { Fonts, Colors, Icons } from "../Themes";
-import Metrics from "../Metrics";
-import Instruction from "../components/Instructions";
-import { connect } from "react-redux";
-import * as actions from "../redux/actions";
-import Icon from "react-native-vector-icons/MaterialIcons";
+import React, { Component } from 'react';
+import { View, ScrollView, Text, Button, StyleSheet } from 'react-native';
+import { Fonts, Colors, Icons } from '../Themes';
+import Metrics from '../Metrics';
+import Instruction from '../components/Instructions';
+import { connect } from 'react-redux';
+import * as actions from '../redux/actions';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
     backgroundColor: Colors.primaryBackground
   },
   welcome: {
     fontSize: Fonts.size.h4,
     fontFamily: Fonts.type.base,
     color: Colors.primaryText,
-    textAlign: "center",
+    textAlign: 'center',
     margin: Metrics.baseMargin
   },
   instructions: {
-    textAlign: "center",
+    textAlign: 'center',
     marginBottom: 5,
     color: Colors.primaryText,
     fontSize: Fonts.size.medium
@@ -35,13 +35,13 @@ const styles = StyleSheet.create({
 class HomeScreen extends Component {
 
   static navigationOptions = {
-    title: "Home",
+    title: 'Home',
     tabBarIcon: (props) => (
       <Icon name="home" size={Icons.medium} color={props.tintColor} />
     ),
-    headerTintColor: "white",
+    headerTintColor: 'white',
     headerStyle: {
-      backgroundColor: "#39babd",
+      backgroundColor: '#39babd',
     }
   }
 
@@ -51,7 +51,7 @@ class HomeScreen extends Component {
 
   handleDeviceInfoClick = () => {
     const { navigate } = this.props.navigation;
-    navigate("DeviceInfo", { title: "My Device Info" });
+    navigate('DeviceInfo', { title: 'My Device Info' });
   };
 
   handleAddTodoClick = () => {

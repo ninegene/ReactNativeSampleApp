@@ -1,9 +1,9 @@
-import React, { Component } from "react";
-import { ImageBackground, StyleSheet } from "react-native";
-import { Icons } from "../Themes";
-import Images from "../images";
-import DeviceInfo from "../components/DeviceInfo";
-import Icon from "react-native-vector-icons/MaterialIcons";
+import React, { Component } from 'react';
+import { ImageBackground, StyleSheet } from 'react-native';
+import { Icons } from '../Themes';
+import Images from '../images';
+import DeviceInfo from '../components/DeviceInfo';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 const styles = StyleSheet.create({
   bgImageContainer: {
@@ -12,30 +12,30 @@ const styles = StyleSheet.create({
     // resizeMode: "cover", // or 'stretch',
     width: undefined,
     height: undefined,
-    backgroundColor: "transparent",
-    justifyContent: "center",
-    alignItems: "center",
+    backgroundColor: 'transparent',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   container: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   textColor: {
-    color: "white",
+    color: 'white',
   },
 });
 
 class DeviceInfoScreen extends Component {
 
   static navigationOptions = {
-    title: "Device Info",
+    title: 'Device Info',
     tabBarIcon: (props) => (
       <Icon name="perm-device-information" size={Icons.medium} color={props.tintColor} />
     ),
-    headerTintColor: "white",
+    headerTintColor: 'white',
     headerStyle: {
-      backgroundColor: "#39babd",
+      backgroundColor: '#39babd',
     }
   }
 

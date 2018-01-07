@@ -1,11 +1,11 @@
 // import "react-native";
-import React from "react";
-import App from "../src/containers/App";
+import React from 'react';
+import App from '../src/containers/App';
 
 // Note: test renderer must be required after react-native.
-import renderer from "react-test-renderer";
+import renderer from 'react-test-renderer';
 
-jest.mock("react-native-code-push", () => {
+jest.mock('react-native-code-push', () => {
   return {
     InstallMode: {},
     CheckFrequency: {},
@@ -26,7 +26,7 @@ jest.mock("react-native-code-push", () => {
   };
 });
 
-it("renders correctly", () => {
+it('renders correctly', () => {
   renderer.create(
     <App />
   );

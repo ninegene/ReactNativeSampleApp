@@ -1,4 +1,4 @@
-import * as types from "./types";
+import * as types from './types';
 
 // Note: redux-persist v5.2.2 rehydrated array as object
 const todos = (state = { seq: 0, todos: [] }, action) => {

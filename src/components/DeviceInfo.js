@@ -1,20 +1,20 @@
-import React, { Component } from "react";
-import { ScrollView, View, StyleSheet, Text } from "react-native";
-import d from "react-native-device-info";
+import React, { Component } from 'react';
+import { ScrollView, View, StyleSheet, Text } from 'react-native';
+import d from 'react-native-device-info';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 5,
-    backgroundColor: "white",
+    backgroundColor: 'white',
   },
   row: {
     flex: 1,
-    flexDirection: "row",
+    flexDirection: 'row',
     // flexWrap: "nowrap",
-    justifyContent: "flex-start",
-    alignItems: "stretch",
-    borderColor: "#ccc",
+    justifyContent: 'flex-start',
+    alignItems: 'stretch',
+    borderColor: '#ccc',
     borderBottomWidth: 0.3,
     paddingBottom: 2,
     marginBottom: 2,
@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
     fontSize: 10,
     paddingRight: 10,
     width: 120,
-    textAlign: "right",
+    textAlign: 'right',
   },
   valueText: {
     fontSize: 10,
@@ -48,8 +48,8 @@ class DeviceInfo extends Component {
         <Row name="Build Number" value={d.getBuildNumber()} />
         <Row name="App Version" value={d.getVersion()} />
         <Row name="App Version (Readable)" value={d.getReadableVersion()} />
-        <Row name="Running in Emulator" value={d.isEmulator() + ""} />
-        <Row name="Running on Tablet" value={d.isTablet() + ""} />
+        <Row name="Running in Emulator" value={d.isEmulator() + ''} />
+        <Row name="Running on Tablet" value={d.isTablet() + ''} />
         <Row name="Instance ID (Android)" value={d.getInstanceID && d.getInstanceID()} />
         <Row name="Phone Number (Android)" value={d.getPhoneNumber && d.getPhoneNumber()} />
         <Row name="First Install Time (Android)" value={d.getFirstInstallTime && d.getFirstInstallTime()} />

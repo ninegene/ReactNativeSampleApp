@@ -1,8 +1,8 @@
-import { TabNavigator } from "react-navigation";
-import _ from "lodash";
+import { TabNavigator } from 'react-navigation';
+import _ from 'lodash';
 
-import HomeScreen from "../containers/HomeScreen";
-import DeviceInfoScreen from "../containers/DeviceInfoScreen";
+import HomeScreen from '../containers/HomeScreen';
+import DeviceInfoScreen from '../containers/DeviceInfoScreen';
 
 // Manifest of possible screens
 const AppNavigator = TabNavigator(
@@ -15,11 +15,11 @@ const AppNavigator = TabNavigator(
     },
   },
   {
-    tabBarPosition: "bottom",
+    tabBarPosition: 'bottom',
     animationEnabled: false,
     swipeEnabled: true,
     tabBarOptions: {
-      activeTintColor: "#e91e63",
+      activeTintColor: '#e91e63',
     }
   }
 );
