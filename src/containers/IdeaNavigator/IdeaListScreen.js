@@ -4,8 +4,8 @@ import { ScrollView, Text, Button, StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-navigation';
 // import { Fonts, Colors, Metrics } from '../themes';
 import { connect } from 'react-redux';
-import Idea from '../models/Idea';
-import Group from '../models/Group';
+import Idea from '../../models/Idea';
+import Group from '../../models/Group';
 
 const styles = StyleSheet.create({
   container: {

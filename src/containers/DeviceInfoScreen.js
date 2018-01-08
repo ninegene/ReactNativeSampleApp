@@ -1,17 +1,13 @@
 import React, { Component } from 'react';
-import { ImageBackground, StyleSheet } from 'react-native';
-import { Icons, Images, Styles } from '../themes';
+import { View, ImageBackground, StyleSheet } from 'react-native';
+import { Images, Styles } from '../themes';
 import DeviceInfo from '../components/DeviceInfo';
+import Instructions from '../components/Instructions';
 
 const styles = StyleSheet.create({
-
   container: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center',
-  },
-  textColor: {
-    color: 'white',
   },
 });
 
@@ -27,7 +23,10 @@ class DeviceInfoScreen extends Component {
         style={Styles.bgImage}
         source={Images.bgMobilePhone}
       >
-        <DeviceInfo />
+        <View style={styles.container}>
+          <Instructions />
+          <DeviceInfo />
+        </View>
       </ImageBackground>
     );
   }

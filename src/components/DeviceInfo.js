@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 5,
-    backgroundColor: 'white',
+    backgroundColor: 'rgba(0, 0, 0, 0.7)',
   },
   row: {
     flex: 1,
@@ -20,13 +20,15 @@ const styles = StyleSheet.create({
     marginBottom: 2,
   },
   nameText: {
-    fontSize: 10,
+    fontSize: 12,
     paddingRight: 10,
     width: 120,
     textAlign: 'right',
+    color: 'white',
   },
   valueText: {
-    fontSize: 10,
+    fontSize: 12,
+    color: 'white',
   },
 });
 

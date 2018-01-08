@@ -1,6 +1,6 @@
 // @flow
 import * as types from '../types';
-import Group from '../models/Group';
+import Group from '../../models/Group';
 
 function _incrementGroupSeq() {
   return {

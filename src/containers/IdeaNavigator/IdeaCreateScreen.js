@@ -3,16 +3,13 @@ import {
   TextInput, TouchableOpacity, ScrollView, Text, Button, StyleSheet
 } from 'react-native';
 import { SafeAreaView } from 'react-navigation';
-import actions from '../redux/actions';
-import Idea from '../models/Idea';
-import Group from '../models/Group';
 import { connect } from 'react-redux';
+import actions from '../../redux/actions';
+import Idea from '../../models/Idea';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // justifyContent: "center",
-    // alignItems: "center",
   },
   input: {
     margin: 15,
@@ -33,56 +30,44 @@ const styles = StyleSheet.create({
   submitButtonText: {
     color: 'white'
   },
-
   url: {
     color: 'red',
     textDecorationLine: 'underline',
   },
-
   email: {
     textDecorationLine: 'underline',
   },
-
   text: {
     color: 'black',
     fontSize: 15,
   },
-
   phone: {
     color: 'blue',
     textDecorationLine: 'underline',
   },
-
   name: {
     color: 'red',
   },
-
   username: {
     color: 'green',
     fontWeight: 'bold',
   },
-
   boldText: {
     fontWeight: 'bold',
   },
-
   italicText: {
     fontStyle: 'italic',
   },
-
   boldItalicText: {
     fontWeight: 'bold',
     fontStyle: 'italic',
   },
-
   codeText: {
     fontFamily: 'monospace',
   },
-
   strikeText: {
     textDecorationLine: 'line-through',
   },
-
   h1: {
     color: 'black',
     fontWeight: 'bold',
