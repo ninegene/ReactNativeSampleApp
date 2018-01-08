@@ -3,10 +3,12 @@ import { Platform } from 'react-native';
 import { TabNavigator, StackNavigator } from 'react-navigation';
 import _ from 'lodash';
 import { Icons } from '../themes';
-import Icon from 'react-native-vector-icons/MaterialIcons';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-import WelcomeScreen from './WelcomeScreen';
+import PlaygroundScreen from './PlaygroundScreen';
 import IdeaNavigator from './IdeaNavigator';
 import DeviceInfoScreen from './DeviceInfoScreen';
 
@@ -21,12 +23,12 @@ export const MainScreenNavigator = TabNavigator({
       ),
     }
   },
-  Welcome: {
-    screen: WelcomeScreen,
+  Playground: {
+    screen: PlaygroundScreen,
     navigationOptions: {
-      title: 'Welcome',
+      title: 'Playground',
       tabBarIcon: (props) => (
-        <Icon name="home" size={Icons.medium} color={props.tintColor} />
+        <MaterialCommunityIcons name="test-tube" size={Icons.medium} color={props.tintColor} />
       ),
     }
   },
@@ -35,7 +37,7 @@ export const MainScreenNavigator = TabNavigator({
     navigationOptions: {
       title: 'Device Info',
       tabBarIcon: (props) => (
-        <Icon name="perm-device-information" size={Icons.medium} color={props.tintColor} />
+        <MaterialIcons name="perm-device-information" size={Icons.medium} color={props.tintColor} />
       ),
     }
   },
