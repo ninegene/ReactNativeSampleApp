@@ -14,7 +14,7 @@ const persistConfig = {
   debug: __DEV__,
 };
 
-const reducer = persistCombineReducers(persistConfig, reducers);
+const combinedReducers = persistCombineReducers(persistConfig, reducers);
 
 const enhancers = [
   devToolsEnhancer({
@@ -33,5 +33,5 @@ const composeEnhancers = (
 
 const enhancer = composeEnhancers(...enhancers);
 
-export const store = createStore(reducer, applyMiddleware(...middlewares));
+export const store = createStore(combinedReducers, applyMiddleware(...middlewares));
 export const persistor = persistStore(store, enhancer);

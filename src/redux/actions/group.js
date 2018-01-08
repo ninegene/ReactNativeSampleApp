@@ -1,6 +1,6 @@
 // @flow
 import * as types from '../types';
-import Group from '../../models/Group';
+import Group from '../models/Group';
 
 function _incrementGroupSeq() {
   return {
@@ -19,8 +19,8 @@ export function addGroup(group : Group) {
   return (dispatch: Function, getState: Function) => {
     const { sequence } = getState();
     group.seq = sequence.group;
-    dispatch(_addGroup(group));
     dispatch(_incrementGroupSeq());
+    dispatch(_addGroup(group));
   };
 }
 

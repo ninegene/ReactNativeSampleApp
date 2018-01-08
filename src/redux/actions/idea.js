@@ -19,8 +19,8 @@ export function addIdea(idea : Idea) {
   return (dispatch: Function, getState: Function) => {
     const { sequence } = getState();
     idea.seq = sequence.idea;
-    dispatch(_addIdea(idea));
     dispatch(_incrementIdeaSeq());
+    dispatch(_addIdea(idea));
   };
 }
 

@@ -1,12 +1,10 @@
 export const INCREMENT_IDEA_SEQ = 'INCREMENT_IDEA_SEQ';
+export const INCREMENT_GROUP_SEQ = 'INCREMENT_GROUP_SEQ';
+
 export const ADD_IDEA = 'ADD_IDEA';
 export const UPDATE_IDEA = 'UPDATE_IDEA';
 export const DELETE_IDEA_BY_ID = 'DELETE_IDEA_BY_ID';
 
-export const INCREMENT_GROUP_SEQ = 'INCREMENT_GROUP_SEQ';
 export const ADD_GROUP = 'ADD_GROUP';
 export const UPDATE_GROUP = 'UPDATE_GROUP';
 export const DELETE_GROUP_BY_ID = 'DELETE_GROUP_BY_ID';
-
-
-
