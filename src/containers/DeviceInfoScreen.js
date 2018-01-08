@@ -1,21 +1,11 @@
 import React, { Component } from 'react';
 import { ImageBackground, StyleSheet } from 'react-native';
-import { Icons } from '../Themes';
-import Images from '../images';
+import { Icons, Images, Styles } from '../themes';
 import DeviceInfo from '../components/DeviceInfo';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 const styles = StyleSheet.create({
-  bgImageContainer: {
-    flex: 1,
-    // https://facebook.github.io/react-native/docs/image.html
-    // resizeMode: "cover", // or 'stretch',
-    width: undefined,
-    height: undefined,
-    backgroundColor: 'transparent',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
+
   container: {
     flex: 1,
     justifyContent: 'center',
@@ -46,8 +36,8 @@ class DeviceInfoScreen extends Component {
   render() {
     return (
       <ImageBackground
-        style={styles.bgImageContainer}
-        source={Images.mobilePhoneBg}
+        style={Styles.bgImage}
+        source={Images.bgMobilePhone}
       >
         <DeviceInfo />
       </ImageBackground>

@@ -1,13 +1,13 @@
 import React from 'react';
 import { Text, Platform } from 'react-native';
 import { StyleSheet } from 'react-native';
-import { Fonts, Colors } from '../Themes';
+import { Fonts, Colors } from '../themes';
 
 const styles = StyleSheet.create({
   instructions: {
     textAlign: 'center',
     marginBottom: 5,
-    color: Colors.primaryText,
+    color: Colors.text,
     fontSize: Fonts.size.small
   }
 });

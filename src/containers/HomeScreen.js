@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { View, ScrollView, Text, Button, StyleSheet } from 'react-native';
-import { Fonts, Colors, Icons } from '../Themes';
-import Metrics from '../Metrics';
+import { Fonts, Colors, Metrics, Icons } from '../themes';
 import Instruction from '../components/Instructions';
 import { connect } from 'react-redux';
 import * as actions from '../redux/actions';
@@ -12,20 +11,20 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: Colors.primaryBackground
+    backgroundColor: Colors.background,
   },
   welcome: {
-    fontSize: Fonts.size.h4,
+    fontSize: Fonts.size.large,
     fontFamily: Fonts.type.base,
-    color: Colors.primaryText,
+    color: Colors.text,
     textAlign: 'center',
-    margin: Metrics.baseMargin
+    margin: Metrics.baseMargin,
   },
   instructions: {
     textAlign: 'center',
     marginBottom: 5,
-    color: Colors.primaryText,
-    fontSize: Fonts.size.medium
+    color: Colors.text,
+    fontSize: Fonts.size.medium,
   },
   button: {
     margin: 20,
