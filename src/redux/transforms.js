@@ -8,7 +8,7 @@ let modelTransform = createTransform(
   (state, key) => {
     __DEV__ && console.log('modelTransform: inbound:', key, state);
     if (Array.isArray(state)) {
-      state = state.map(todo => todo.toPlainObject ? todo.toPlainObject() : todo);
+      state = state.map(obj => obj.toPlainObject ? obj.toPlainObject() : obj);
     }
     return stringify(state);
   },

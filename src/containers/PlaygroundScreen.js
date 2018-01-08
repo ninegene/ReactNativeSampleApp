@@ -4,7 +4,7 @@ import { View, ScrollView, Text, Button, StyleSheet } from 'react-native';
 // import { Fonts, Colors, Metrics } from '../themes';
 // import Instruction from '../components/Instructions';
 import { connect } from 'react-redux';
-import * as actions from '../redux/actions';
+import actions from '../redux/actions';
 import Idea from '../models/Idea';
 import Group from '../models/Group';
 

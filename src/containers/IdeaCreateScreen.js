@@ -3,7 +3,7 @@ import {
   TextInput, TouchableOpacity, ScrollView, Text, Button, StyleSheet
 } from 'react-native';
 import { SafeAreaView } from 'react-navigation';
-import * as actions from '../redux/actions';
+import actions from '../redux/actions';
 import Idea from '../models/Idea';
 import Group from '../models/Group';
 import { connect } from 'react-redux';
@@ -195,7 +195,7 @@ class IdeaCreateScreen extends Component {
           <TouchableOpacity
             style={styles.submitButton}
             onPress={this.handleCreateIdeaPress}>
-            <Text style={styles.submitButtonText}> Submit </Text>
+            <Text style={styles.submitButtonText}> Create </Text>
           </TouchableOpacity>
           <Button onPress={this.handleBackPress} title="Go back" />
         </SafeAreaView>

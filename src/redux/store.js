@@ -18,7 +18,7 @@ const reducer = persistCombineReducers(persistConfig, reducers);
 
 const enhancers = [
   devToolsEnhancer({
-    name: 'ideanota', realtime: true,
+    name: 'ReactNativeSampleApp', realtime: true,
   }),
 ];
 
