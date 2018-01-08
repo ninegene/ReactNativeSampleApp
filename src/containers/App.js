@@ -4,7 +4,7 @@ import codePush from 'react-native-code-push';
 import { store, persistor } from '../redux/store';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/lib/integration/react';
-import AppNavigator from '../navigators/AppNavigator';
+import AppNavigator from './AppNavigator';
 
 // See: https://microsoft.github.io/code-push/docs/react-native.html#link-6
 // See: https://microsoft.github.io/code-push/docs/react-native.html#link-10
