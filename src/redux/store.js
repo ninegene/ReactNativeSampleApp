@@ -1,23 +1,24 @@
-import {applyMiddleware, createStore, compose} from "redux";
-import devToolsEnhancer from "remote-redux-devtools";
-import { persistStore, persistCombineReducers } from "redux-persist";
-import { AsyncStorage } from "react-native";
-import middlewares from "./middlewares";
-import reducers from "./reducers";
+import { applyMiddleware, createStore, compose } from 'redux';
+import devToolsEnhancer from 'remote-redux-devtools';
+import { persistStore, persistCombineReducers } from 'redux-persist';
+import { AsyncStorage } from 'react-native';
+import middlewares from './middlewares';
+import reducers from './reducers';
+import transforms from './transforms';
 
 // See https://github.com/rt2zz/redux-persist
 const persistConfig = {
-  key: "root",
+  key: 'root',
   storage: AsyncStorage,
-  debug: true,
+  transforms,
+  debug: __DEV__,
 };
 
-const reducer = persistCombineReducers(persistConfig, reducers);
+const combinedReducers = persistCombineReducers(persistConfig, reducers);
 
 const enhancers = [
-  applyMiddleware(...middlewares),
   devToolsEnhancer({
-    name: "ideanota", realtime: true,
+    name: 'ReactNativeSampleApp', realtime: true,
   }),
 ];
 
@@ -25,12 +26,12 @@ const enhancers = [
 /* eslint-disable no-undef */
 const composeEnhancers = (
   __DEV__ &&
-  typeof (window) !== "undefined" &&
+  typeof (window) !== 'undefined' &&
   window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
 ) || compose;
 /* eslint-enable no-undef */
 
 const enhancer = composeEnhancers(...enhancers);
 
-export const store = createStore(reducer);
+export const store = createStore(combinedReducers, applyMiddleware(...middlewares));
 export const persistor = persistStore(store, enhancer);

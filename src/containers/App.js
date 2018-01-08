@@ -1,10 +1,10 @@
 const isDevMode = !!__DEV__;
-import React, { Component } from "react";
-import codePush from "react-native-code-push";
-import { store, persistor } from "../redux/store";
-import { Provider } from "react-redux";
-import { PersistGate } from "redux-persist/lib/integration/react";
-import AppNavigator from "../navigators/AppNavigator";
+import React, { Component } from 'react';
+import codePush from 'react-native-code-push';
+import { store, persistor } from '../redux/store';
+import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/lib/integration/react';
+import AppNavigator from './AppNavigator';
 
 // See: https://microsoft.github.io/code-push/docs/react-native.html#link-6
 // See: https://microsoft.github.io/code-push/docs/react-native.html#link-10
@@ -27,26 +27,26 @@ class App extends Component {
   codePushStatusDidChange(status) {
     switch (status) {
       case codePush.SyncStatus.CHECKING_FOR_UPDATE:
-        console.log("Checking for updates.");
+        console.log('Checking for updates.');
         break;
       case codePush.SyncStatus.DOWNLOADING_PACKAGE:
-        console.log("Downloading package.");
+        console.log('Downloading package.');
         break;
       case codePush.SyncStatus.INSTALLING_UPDATE:
-        console.log("Installing update.");
+        console.log('Installing update.');
         break;
       case codePush.SyncStatus.UP_TO_DATE:
-        console.log("Up-to-date.");
+        console.log('Up-to-date.');
         break;
       case codePush.SyncStatus.UPDATE_INSTALLED:
-        console.log("Update installed.");
+        console.log('Update installed.');
         break;
     }
   }
 
   codePushDownloadDidProgress(progress) {
     console.log(
-      progress.receivedBytes + " of " + progress.totalBytes + " received."
+      progress.receivedBytes + ' of ' + progress.totalBytes + ' received.'
     );
   }
 
